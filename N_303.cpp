@@ -9,7 +9,6 @@ public:
         	dp[i] += dp[i - 1];
         }
     }
-    
     int sumRange(int i, int j) 
     {
     	return i == 0 ? dp[j] : dp[j] - dp[i - 1];
