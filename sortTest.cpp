@@ -42,3 +42,20 @@ void insertSort(int A[], int n)
 		}
 	}
 }
+
+void shellSort(int A[], int n)
+{
+	int h = 1;
+	while(h < n / 3) h = 3 * h + 1;
+	while(h >= 1)
+	{
+		for (int i = h; i < n; ++i)
+		{
+			for (int j = i; j >= h && A[j] < A[j - h] ; j -= h)
+			{
+				swap(A, j, j - h);
+			}
+		}
+		h /= 3;
+	}
+}
