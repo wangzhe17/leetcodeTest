@@ -59,3 +59,35 @@ void shellSort(int A[], int n)
 		h /= 3;
 	}
 }
+
+void mergeSort(int A[], int left, int right, int temp[])
+{
+	if(left < right)
+	{
+		int mid = left + (right - left) / 2;
+		mergeSort(A, left, mid, temp);
+		mergeSort(A, mid + 1, right, temp);
+		merge(A, left, right, mid, temp);
+	}
+}
+
+void merge(int A[], int left, int right, int mid, int temp[])
+{
+	int i = left;
+	int j = mid + 1;
+	int t = 0;
+	while(i <= mid && j <= right)
+	{
+		if(A[i] <= A[j]) temp[t++] = A[i++];
+		else temp[t++] = A[j++];
+	}
+
+	while(i <= mid)
+		temp[t++] = A[i++];
+	while(j <= right)
+		temp[t++] = A[i++];
+
+	t = 0;
+	while(left <= right)
+		A[left++] = temp[t++];
+} 
